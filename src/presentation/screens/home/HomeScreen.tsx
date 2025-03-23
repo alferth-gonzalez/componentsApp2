@@ -4,10 +4,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { globalStyles } from '../../../config/theme/theme';
 import { Title } from '../../components/ui/Title';
+import { MenuItem } from '../../components/ui/MenuItem';
 
 
-export const menuItems = [
-  // 01-animationMenuItems
+const animationMenuItems = [
   {
     name: 'Animation 101',
     icon: 'cube-outline',
@@ -18,7 +18,9 @@ export const menuItems = [
     icon: 'albums-outline',
     component: 'Animation102Screen',
   },
+]
 
+export const menuItems = [
 
   // 02-menuItems
   {
@@ -51,7 +53,9 @@ export const menuItems = [
     icon: 'flask-outline',
     component: 'ChangeThemeScreen',
   },
+];
 
+const uiMenuItems = [
   // 03- uiMenuItems
   {
     name: 'Switches',
@@ -68,7 +72,7 @@ export const menuItems = [
     icon: 'document-text-outline',
     component: 'TextInputScreen',
   },
-];
+]
 
 export const HomeScreen = () => {
   return (
@@ -79,10 +83,39 @@ export const HomeScreen = () => {
 
           {
             menuItems.map( (item, index) => (
-              <View key={index}>
-                <Text>{item.name}</Text>
-                <Ionicons name={item.icon} size={50} color="black" />
-              </View>
+              <MenuItem 
+                key={index} 
+                {...item} 
+                isFirst={index === 0}
+                isLast={index === menuItems.length - 1}
+              />
+            ))
+          }
+
+          <View style={{ marginTop: 30 }}/>
+
+          {
+
+            animationMenuItems.map( (item, index) => (
+              <MenuItem 
+                key={index} 
+                {...item} 
+                isFirst={index === 0}
+                isLast={index === animationMenuItems.length - 1}
+              />
+            ))
+          }
+
+          <View style={{ marginTop: 30 }}/>
+
+          {
+            uiMenuItems.map( (item, index) => (
+              <MenuItem 
+                key={index} 
+                {...item} 
+                isFirst={index === 0}
+                isLast={index === uiMenuItems.length - 1}
+              />
             ))
           }
 
